@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            alt="About Globalfactry"
+            alt="About Logicwerk DLM"
             fill
             className="object-cover"
           />
@@ -26,7 +26,7 @@ export default function AboutPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About Globalfactry</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About Logicwerk DLM</h1>
             <p className="text-xl text-gray-200 mb-8">
               Transforming manufacturing through innovation, technology, and global partnerships. We're building the
               future of production, one project at a time.
@@ -189,7 +189,7 @@ export default function AboutPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Manufacturing?</h2>
-          <p className="text-xl text-gray-600 mb-8">Join hundreds of companies already scaling with Globalfactry</p>
+          <p className="text-xl text-gray-600 mb-8">Join hundreds of companies already scaling with Logicwerk DLM</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <GradientButton width="160px" height="48px">
               Get Started

@@ -23,7 +23,7 @@ export default function CaseStudiesPage() {
       image:
         "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       testimonial:
-        "Globalfactry transformed our manufacturing capabilities and helped us meet aggressive EV production targets.",
+        "Logicwerk DLM transformed our manufacturing capabilities and helped us meet aggressive EV production targets.",
       testimonialAuthor: "Ravi Sharma, VP Manufacturing",
     },
     {
@@ -73,7 +73,7 @@ export default function CaseStudiesPage() {
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Success Stories</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Discover how leading companies have transformed their manufacturing with Globalfactry
+              Discover how leading companies have transformed their manufacturing with Logicwerk DLM
             </p>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function ContactPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            alt="Contact Globalfactry"
+            alt="Contact Logicwerk DLM"
             fill
             className="object-cover"
           />
@@ -114,8 +114,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 mb-2">Email Us</h3>
-                        <p className="text-gray-600 mb-1">contact@globalfactry.com</p>
-                        <p className="text-gray-600">support@globalfactry.com</p>
+                        <p className="text-gray-600 mb-1">contact@logicwerkdlm.com</p>
+                        <p className="text-gray-600">support@logicwerkdlm.com</p>
                       </div>
                     </div>
                   </CardContent>

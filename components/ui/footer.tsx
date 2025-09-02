@@ -5,7 +5,11 @@ import Image from "next/image"
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, ArrowRight } from "lucide-react"
 import GradientButton from "./button-1"
 
+import { useState } from "react"
+import ConversationalQuoteModal from "@/components/ui/ConversationalQuoteModal"
+
 export function Footer() {
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
@@ -15,11 +19,11 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <Image
-                src="/images/logo-dark-bg.png"
+                src="/images/logo-white.png"
                 alt="Globalfactry Logo"
-                width={5000}
-                height={5000}
-                className="h-20 w-20 mr-4"
+                width={160}
+                height={40}
+                className="h-10 w-auto mr-4"
                 priority
               />
             </div>
@@ -32,34 +36,34 @@ export function Footer() {
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">contact@globalfactry.com</span>
+                <span className="text-gray-300">contact@logicwerkdlm.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">+91 98765 43210</span>
+                <span className="text-gray-300">+91 820 899 0366</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">Mumbai, India</span>
+                <span className="text-gray-300">Bangalore, India</span>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/logicwerk"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/Logicwerk"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61566249706090"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
               >
                 <Facebook className="w-5 h-5" />
@@ -111,10 +115,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/industries/aerospace-and-defence"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/industries/aerospace-and-defence" className="text-gray-400 hover:text-white transition-colors">
                   Aerospace & Defence
                 </Link>
               </li>
@@ -129,11 +130,43 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/industries/energy-and-utilities"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/industries/energy-and-utilities" className="text-gray-400 hover:text-white transition-colors">
                   Energy & Utilities
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/industrial-equipment" className="text-gray-400 hover:text-white transition-colors">
+                  Industrial Equipment
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/consumer-goods" className="text-gray-400 hover:text-white transition-colors">
+                  Consumer Goods
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/renewable-energy" className="text-gray-400 hover:text-white transition-colors">
+                  Renewable Energy
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/railways" className="text-gray-400 hover:text-white transition-colors">
+                  Railways
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/heavy-machinery" className="text-gray-400 hover:text-white transition-colors">
+                  Heavy Machinery
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/oil-and-gas" className="text-gray-400 hover:text-white transition-colors">
+                  Oil & Gas
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries/construction" className="text-gray-400 hover:text-white transition-colors">
+                  Construction
                 </Link>
               </li>
             </ul>
@@ -144,54 +177,24 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://logicwerk.com/about" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   About Us
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://logicwerk.com/careers" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   Careers
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                  News & Press
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  className="text-gray-400 hover:text-white transition-colors w-full text-left"
+                  onClick={() => setShowQuoteModal(true)}
+                >
                   Contact Us
-                </Link>
+                </button>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-4">Get the latest manufacturing insights and industry updates.</p>
-            <div className="flex space-x-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-              />
-              <GradientButton
-                width="120px"
-                height="40px"
-                onClick={() => console.log("Subscribe clicked")}
-                className="text-sm"
-              >
-                Subscribe
-              </GradientButton>
-            </div>
           </div>
         </div>
       </div>
@@ -200,7 +203,7 @@ export function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">© 2024 Globalfactry. All rights reserved.</div>
+            <div className="text-gray-400 text-sm">© 2024 Logicwerk DLM. All rights reserved.</div>
             <div className="flex space-x-6 text-sm">
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                 Privacy Policy
@@ -215,6 +218,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+    <ConversationalQuoteModal open={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
     </footer>
   )
 }

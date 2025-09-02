@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react"
 
 export const CTAHtml = () => {
   const titleWords = "Ready to Transform Your Manufacturing?".split(" ")
-  const subtitle = "Join hundreds of companies scaling with Globalfactry"
+  const subtitle = "Join hundreds of companies scaling with Logicwerk DLM"
   const [visibleWords, setVisibleWords] = useState(0)
   const [subtitleVisible, setSubtitleVisible] = useState(false)
   const [formVisible, setFormVisible] = useState(false)

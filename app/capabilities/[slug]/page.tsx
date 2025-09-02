@@ -3,12 +3,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/ui/navbar"
+import { Html } from "@/components/ui/html"
 import { Footer } from "@/components/ui/footer"
+import ConversationalQuoteModal from "@/components/ui/ConversationalQuoteModal"
 import GradientButton from "@/components/ui/button-1"
 import { CheckCircle, Clock, Shield, Cpu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { useState } from "react"
 
 const capabilityData = {
   extrusions: {
@@ -221,6 +224,7 @@ const capabilityData = {
 }
 
 export default function CapabilityPage() {
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const params = useParams()
   const slug = params.slug as string
   const capability = capabilityData[slug as keyof typeof capabilityData]
@@ -247,50 +251,18 @@ export default function CapabilityPage() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Breadcrumb Navigation */}
-      <section className="pt-28 pb-4 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-4">
-              <li>
-                <Link href="/" className="text-gray-500 hover:text-gray-700">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-400">/</span>
-              </li>
-              <li>
-                <Link href="/#capabilities" className="text-gray-500 hover:text-gray-700">
-                  Capabilities
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-400">/</span>
-              </li>
-              <li>
-                <span className="text-gray-900 font-medium">{capability.title}</span>
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </section>
-
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden">
+      <section className="relative h-[70vh] min-h-[320px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image src={capability.image || "/placeholder.svg"} alt={capability.title} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{capability.title}</h1>
-            <p className="text-xl text-gray-200 mb-8">{capability.description}</p>
-            <GradientButton width="160px" height="48px">
-              Request Quote
-            </GradientButton>
-          </div>
+        <div className="relative z-10 flex flex-col items-center justify-center w-full px-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 text-center drop-shadow-lg">{capability.title}</h1>
+          <p className="text-lg md:text-xl text-gray-200 mb-6 text-center max-w-2xl drop-shadow">{capability.description}</p>
+          <GradientButton width="160px" height="48px" onClick={() => setQuoteModalOpen(true)}>
+            Request Quote
+          </GradientButton>
         </div>
       </section>
 
@@ -424,25 +396,10 @@ export default function CapabilityPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Contact our experts to discuss your {capability.title.toLowerCase()} requirements
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <GradientButton width="160px" height="48px">
-              Request Quote
-            </GradientButton>
-            <GradientButton width="200px" height="48px">
-              Schedule Consultation
-            </GradientButton>
-          </div>
-        </div>
-      </section>
+      <Html />
 
       <Footer />
+      <ConversationalQuoteModal open={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} />
     </div>
   )
 }

@@ -92,7 +92,7 @@ export default function CareersPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            alt="Careers at Globalfactry"
+            alt="Careers at Logicwerk DLM"
             fill
             className="object-cover"
           />
@@ -117,7 +117,7 @@ export default function CareersPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Join Globalfactry?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Join Logicwerk DLM?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Be part of a company that's revolutionizing manufacturing and making a global impact
             </p>

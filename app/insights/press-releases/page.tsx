@@ -11,7 +11,7 @@ import Image from "next/image"
 export default function PressReleasesPage() {
   const pressReleases = [
     {
-      title: "Globalfactry Raises $50M Series B to Expand AI-Powered Manufacturing Platform",
+      title: "Logicwerk DLM Raises $50M Series B to Expand AI-Powered Manufacturing Platform",
       date: "December 18, 2024",
       category: "Funding",
       excerpt:
@@ -28,7 +28,7 @@ export default function PressReleasesPage() {
         "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
-      title: "Globalfactry Achieves ISO 27001 Certification for Data Security",
+      title: "Logicwerk DLM Achieves ISO 27001 Certification for Data Security",
       date: "November 28, 2024",
       category: "Certification",
       excerpt: "Platform receives international certification for information security management systems.",
@@ -44,7 +44,7 @@ export default function PressReleasesPage() {
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
-      title: "Globalfactry Named 'Manufacturing Innovation Company of the Year'",
+      title: "Logicwerk DLM Named 'Manufacturing Innovation Company of the Year'",
       date: "October 22, 2024",
       category: "Award",
       excerpt: "Recognition from Manufacturing Excellence Awards for revolutionary approach to global manufacturing.",
@@ -62,7 +62,7 @@ export default function PressReleasesPage() {
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Press Releases</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Latest news and announcements from Globalfactry
+              Latest news and announcements from Logicwerk DLM
             </p>
           </div>
         </div>

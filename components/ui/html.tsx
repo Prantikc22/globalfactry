@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import GradientButton from "./button-1"
+import ConversationalQuoteModal from "@/components/ui/ConversationalQuoteModal"
 import { ArrowRight, Sparkles, Zap, Globe, Shield } from "lucide-react"
 
 export const Html = () => {
   const titleWords = "Ready to Transform Your Manufacturing?".split(" ")
   const [visibleWords, setVisibleWords] = useState(0)
   const [formVisible, setFormVisible] = useState(false)
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false)
 
   useEffect(() => {
     if (visibleWords < titleWords.length) {
@@ -118,21 +120,6 @@ export const Html = () => {
                 </div>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 mb-12">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-1">500+</div>
-                  <div className="text-gray-400 text-sm">Projects Delivered</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-1">50+</div>
-                  <div className="text-gray-400 text-sm">Global Partners</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-1">99%</div>
-                  <div className="text-gray-400 text-sm">On-Time Delivery</div>
-                </div>
-              </div>
             </div>
 
             {/* Right Content - Form */}
@@ -187,7 +174,7 @@ export const Html = () => {
                     <GradientButton
                       width="100%"
                       height="56px"
-                      onClick={() => console.log("Get Quote clicked")}
+                      onClick={() => setQuoteModalOpen(true)}
                       className="text-lg font-semibold"
                     >
                       Get Your Quote Today
@@ -245,6 +232,7 @@ export const Html = () => {
           }
         }
       `}</style>
+      <ConversationalQuoteModal open={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} />
     </div>
   )
 }

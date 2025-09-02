@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
+import { Html } from "@/components/ui/html"
+
 import GradientButton from "@/components/ui/button-1"
 import { CheckCircle, TrendingUp, Users, Award } from "lucide-react"
 import Image from "next/image"
@@ -225,7 +227,11 @@ const industryData = {
   },
 }
 
+import { useState } from "react";
+import ConversationalQuoteModal from "@/components/ui/ConversationalQuoteModal";
+
 export default function IndustryPage() {
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const params = useParams()
   const slug = params.slug as string
   const industry = industryData[slug as keyof typeof industryData]
@@ -249,50 +255,22 @@ export default function IndustryPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <ConversationalQuoteModal open={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} />
       {/* Navigation */}
       <Navbar />
 
-      {/* Breadcrumb Navigation */}
-      <section className="pt-28 pb-4 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-4">
-              <li>
-                <Link href="/" className="text-gray-500 hover:text-gray-700">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-400">/</span>
-              </li>
-              <li>
-                <Link href="/#industries" className="text-gray-500 hover:text-gray-700">
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-400">/</span>
-              </li>
-              <li>
-                <span className="text-gray-900 font-medium">{industry.title}</span>
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </section>
-
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden">
+      <section className="relative h-[70vh] min-h-[350px] flex items-center pt-28 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={industry.image || "/placeholder.svg"} alt={industry.title} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{industry.title}</h1>
             <p className="text-xl text-gray-200 mb-8">{industry.description}</p>
-            <GradientButton width="180px" height="48px">
+            <GradientButton width="180px" height="48px" onClick={() => setQuoteModalOpen(true)}>
               Get Industry Quote
             </GradientButton>
           </div>
@@ -406,53 +384,10 @@ export default function IndustryPage() {
         </div>
       </section>
 
-      {/* Related Industries */}
-      <section className="py-16 bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Related Industries</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {Object.entries(industryData)
-              .filter(([key]) => key !== slug)
-              .slice(0, 3)
-              .map(([key, relatedIndustry]) => (
-                <Link key={key} href={`/industries/${key}`}>
-                  <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <div className="relative h-32 overflow-hidden">
-                      <Image
-                        src={relatedIndustry.image || "/placeholder.svg"}
-                        alt={relatedIndustry.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold text-gray-900 mb-2">{relatedIndustry.title}</h3>
-                      <p className="text-sm text-gray-600 line-clamp-2">{relatedIndustry.description}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Start Your {industry.title} Project?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Contact our {industry.title.toLowerCase()} specialists to discuss your manufacturing requirements
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <GradientButton width="160px" height="48px">
-              Request Quote
-            </GradientButton>
-            <GradientButton width="220px" height="48px">
-              Download Capabilities Brochure
-            </GradientButton>
-          </div>
-        </div>
-      </section>
+      <Html />
 
       <Footer />
     </div>

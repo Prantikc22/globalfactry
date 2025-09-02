@@ -7,10 +7,13 @@ import Image from "next/image"
 import GradientButton from "./button-1"
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
 
-export function Navbar() {
+import ConversationalQuoteModal from "@/components/ui/ConversationalQuoteModal"
+
+export function Navbar(props: { onRequestQuote?: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [showQuoteModal, setShowQuoteModal] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -78,14 +81,14 @@ export function Navbar() {
 
   const insights = [
     { href: "/insights/blogs", label: "Blogs", description: "Latest manufacturing insights and trends" },
-    { href: "/insights/press-releases", label: "Press Releases", description: "Company news and announcements" },
+    // { href: "/insights/press-releases", label: "Press Releases", description: "Company news and announcements" }, // Removed as per request
     { href: "/insights/case-studies", label: "Case Studies", description: "Success stories from our clients" },
   ]
 
   const about = [
-    { href: "/about", label: "About Us", description: "Our mission and values" },
-    { href: "/careers", label: "Careers", description: "Join our growing team" },
-    { href: "/contact", label: "Contact", description: "Get in touch with us" },
+    { href: "https://logicwerk.com/about", label: "About Us", description: "Our mission and values", external: true },
+    { href: "https://logicwerk.com/careers", label: "Careers", description: "Join our growing team", external: true },
+    { href: "#", label: "Contact", description: "Get in touch with us", isContact: true },
   ]
 
   const handleDropdownEnter = (dropdown: string) => {
@@ -111,24 +114,24 @@ export function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="flex-shrink-0">
                 {isScrolled ? (
-                  <Image
-                    src="/images/logo-white-bg.png"
-                    alt="Globalfactry - Manufacturing Excellence"
-                    width={25000}
-                    height={7500}
-                    className="h-16 w-auto transition-all duration-500"
-                    priority
-                  />
-                ) : (
-                  <Image
-                    src="/images/logo-dark-bg.png"
-                    alt="Globalfactry Logo"
-                    width={5000}
-                    height={5000}
-                    className="h-16 w-16 transition-all duration-500"
-                    priority
-                  />
-                )}
+  <Image
+    src="/images/logo-black.png"
+    alt="Globalfactry - Manufacturing Excellence"
+    width={110}
+    height={40}
+    className="h-10 w-auto transition-all duration-500"
+    priority
+  />
+) : (
+  <Image
+    src="/images/logo-white.png"
+    alt="Globalfactry Logo"
+    width={110}
+    height={40}
+    className="h-10 w-auto transition-all duration-500"
+    priority
+  />
+)}
               </Link>
             </div>
 
@@ -205,10 +208,10 @@ export function Navbar() {
               <GradientButton
                 width="140px"
                 height="44px"
-                onClick={() => console.log("Request Quote clicked")}
+                onClick={props.onRequestQuote ? props.onRequestQuote : () => console.log("Request Quote clicked")}
                 className="text-sm font-medium"
               >
-                Request Quote
+                Get A Quote
               </GradientButton>
             </div>
 
@@ -270,16 +273,31 @@ export function Navbar() {
 
               <div className="space-y-2">
                 <div className="text-sm font-semibold text-gray-900 px-3 py-2">About</div>
-                {about.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block px-6 py-2 text-gray-600 hover:text-blue-600 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {about.map((item) =>
+                  item.isContact ? (
+                    <button
+                      key={item.label}
+                      className="block px-6 py-2 text-gray-600 hover:text-blue-600 transition-colors w-full text-left"
+                      onClick={() => {
+                        setShowQuoteModal(true)
+                        setIsMobileMenuOpen(false)
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  ) : (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      className="block px-6 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  )
+                )}
                 <div className="px-6 py-2">
                   <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Insights</div>
                   {insights.map((insight) => (
@@ -425,28 +443,51 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">About Globalfactry</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">About Logicwerk DLM</h3>
               <p className="text-gray-600 mb-8">Learn more about our company, team, and mission</p>
 
               <div className="space-y-4">
-                {about.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block group p-4 rounded-xl hover:bg-blue-50 transition-all duration-300"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
-                          {item.label}
-                        </h4>
-                        <p className="text-sm text-gray-600">{item.description}</p>
+                {about.map((item) =>
+                  item.isContact ? (
+                    <button
+                      key={item.label}
+                      className="block group p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 w-full text-left"
+                      onClick={() => {
+                        setShowQuoteModal(true)
+                        setIsMobileMenuOpen(false)
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                            {item.label}
+                          </h4>
+                          <p className="text-sm text-gray-600">{item.description}</p>
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
                       </div>
-                      <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
-                    </div>
-                  </Link>
-                ))}
+                    </button>
+                  ) : (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      className="block group p-4 rounded-xl hover:bg-blue-50 transition-all duration-300"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                            {item.label}
+                          </h4>
+                          <p className="text-sm text-gray-600">{item.description}</p>
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
+                      </div>
+                    </a>
+                  )
+                )}
               </div>
             </div>
 
@@ -484,6 +525,7 @@ export function Navbar() {
           onClick={() => setActiveDropdown(null)}
         />
       )}
+      <ConversationalQuoteModal open={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
     </>
   )
 }
