@@ -171,15 +171,16 @@ export const Html = () => {
                   </div>
 
                   <div className="pt-2">
-                    <GradientButton
-                      width="100%"
-                      height="56px"
-                      onClick={() => setQuoteModalOpen(true)}
-                      className="text-lg font-semibold"
-                    >
-                      Get Your Quote Today
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </GradientButton>
+                  <GradientButton
+                    width="200px"
+                    height="56px"
+                    data-open-quote="true"
+                    data-prefetch-modal="true"
+                    className="text-lg font-semibold"
+                  >
+                    Get Your Quote Today
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </GradientButton>
                   </div>
                 </form>
 

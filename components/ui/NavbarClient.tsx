@@ -1,22 +1,21 @@
-// components/ui/navbar.tsx
+// components/ui/NavbarClient.tsx
 "use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import GradientButton from "./button-1";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
-type Props = {
-  onRequestQuote?: () => void;
-};
-
-export function Navbar(props: Props) {
+// Props: all static data passed from server
+export default function NavbarClient({ services, capabilities, insights, about }: {
+  services: any[];
+  capabilities: any[];
+  insights: any[];
+  about: any[];
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -24,63 +23,10 @@ export function Navbar(props: Props) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const services = [
-    {
-      href: "/services/contract-manufacturing",
-      label: "Contract Manufacturing",
-      description: "Unlimited capacity with lower pricing & lead times",
-    },
-    {
-      href: "/services/job-work",
-      label: "Integrated Job-Work",
-      description: "From prototyping to production with full transparency",
-    },
-    {
-      href: "/services/inventory-logistics",
-      label: "Inventory & Logistics",
-      description: "AI-driven demand forecasting and global shipping",
-    },
-  ];
-
-  const capabilities = [
-    { href: "/capabilities/extrusions", label: "Extrusions", description: "Precision aluminum and plastic profiles" },
-    { href: "/capabilities/die-casting", label: "Die Casting", description: "High-pressure casting with tight tolerances" },
-    { href: "/capabilities/cnc-machining", label: "CNC Machining", description: "Multi-axis precision machining" },
-    { href: "/capabilities/injection-molding", label: "Injection Molding", description: "High-volume plastic manufacturing" },
-    { href: "/capabilities/forging", label: "Forging", description: "Hot and cold forging processes" },
-    { href: "/capabilities/sheet-metal-stamping", label: "Sheet Metal Stamping", description: "Progressive and transfer stamping" },
-    { href: "/capabilities/prototyping-pre-production", label: "Prototyping", description: "Rapid prototyping and small-batch production" },
-    { href: "/capabilities/investment-casting", label: "Investment Casting", description: "Precision casting for complex geometries" },
-    { href: "/capabilities/assembly-services", label: "Assembly Services", description: "Complete assembly with quality assurance" },
-  ];
-
-  const insights = [
-    { href: "/insights/blogs", label: "Blogs", description: "Latest manufacturing insights and trends" },
-    { href: "/insights/case-studies", label: "Case Studies", description: "Success stories from our clients" },
-  ];
-
-  const about = [
-    { href: "https://logicwerk.com/about", label: "About Us", description: "Our mission and values", external: true },
-    { href: "https://logicwerk.com/careers", label: "Careers", description: "Join our growing team", external: true },
-    { href: "#", label: "Contact", description: "Get in touch with us", isContact: true },
-  ];
-
   const handleDropdownEnter = (dropdown: string) => setActiveDropdown(dropdown);
   const handleDropdownLeave = () => setActiveDropdown(null);
 
-  // Unified handler: calls parent callback if present, otherwise dispatches the global event
   const triggerOpenQuote = () => {
-    if (typeof props.onRequestQuote === "function") {
-      try {
-        props.onRequestQuote();
-        return;
-      } catch (err) {
-        // fallback to event if parent handler fails
-        console.warn("props.onRequestQuote threw:", err);
-      }
-    }
-
-    // Prefetch modal & framer-motion, then dispatch open event
     if (typeof window !== "undefined") {
       import("@/components/ui/ConversationalQuoteModal").catch(() => {});
       import("framer-motion").catch(() => {});
@@ -123,7 +69,6 @@ export function Navbar(props: Props) {
                 )}
               </Link>
             </div>
-
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {/* Services Dropdown */}
@@ -143,7 +88,6 @@ export function Navbar(props: Props) {
                   <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
               </div>
-
               {/* Capabilities Dropdown */}
               <div
                 className="relative group"
@@ -161,7 +105,6 @@ export function Navbar(props: Props) {
                   <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
               </div>
-
               <Link
                 href="/#industries"
                 className={`px-4 py-2 font-medium transition-all duration-500 rounded-lg ${
@@ -172,7 +115,6 @@ export function Navbar(props: Props) {
               >
                 Industries
               </Link>
-
               {/* About Dropdown */}
               <div
                 className="relative group"
@@ -191,15 +133,12 @@ export function Navbar(props: Props) {
                 </button>
               </div>
             </div>
-
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center">
-              {/* Use local handler which falls back to dispatching event */}
               <GradientButton width="140px" height="44px" onClick={triggerOpenQuote} className="text-sm font-medium">
                 Get A Quote
               </GradientButton>
             </div>
-
             {/* Mobile menu button */}
             <div className="lg:hidden">
               <button
@@ -213,7 +152,6 @@ export function Navbar(props: Props) {
             </div>
           </div>
         </div>
-
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200">
@@ -231,7 +169,6 @@ export function Navbar(props: Props) {
                   </Link>
                 ))}
               </div>
-
               <div className="space-y-2">
                 <div className="text-sm font-semibold text-gray-900 px-3 py-2">Capabilities</div>
                 {capabilities.slice(0, 5).map((capability) => (
@@ -245,7 +182,6 @@ export function Navbar(props: Props) {
                   </Link>
                 ))}
               </div>
-
               <Link
                 href="/#industries"
                 className="block px-3 py-2 text-gray-900 font-medium hover:text-blue-600 transition-colors"
@@ -253,7 +189,6 @@ export function Navbar(props: Props) {
               >
                 Industries
               </Link>
-
               <div className="space-y-2">
                 <div className="text-sm font-semibold text-gray-900 px-3 py-2">About</div>
                 {about.map((item) =>
@@ -262,7 +197,6 @@ export function Navbar(props: Props) {
                       key={item.label}
                       className="block px-6 py-2 text-gray-600 hover:text-blue-600 transition-colors w-full text-left"
                       onClick={() => {
-                        // use unified trigger (falls back to event)
                         triggerOpenQuote();
                         setIsMobileMenuOpen(false);
                       }}
@@ -296,7 +230,6 @@ export function Navbar(props: Props) {
                   ))}
                 </div>
               </div>
-
               <div className="pt-4">
                 <GradientButton
                   width="100%"
@@ -314,7 +247,6 @@ export function Navbar(props: Props) {
           </div>
         )}
       </nav>
-
       {/* Full-width Dropdown Overlays */}
       {/* Services Dropdown */}
       <div
@@ -329,7 +261,6 @@ export function Navbar(props: Props) {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Services</h3>
               <p className="text-gray-600 mb-8">End-to-end manufacturing solutions for your business needs</p>
-
               <div className="space-y-6">
                 {services.map((service) => (
                   <Link
@@ -350,7 +281,6 @@ export function Navbar(props: Props) {
                 ))}
               </div>
             </div>
-
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Why Choose Our Services?</h4>
               <ul className="space-y-3">
@@ -380,7 +310,6 @@ export function Navbar(props: Props) {
           </div>
         </div>
       </div>
-
       {/* Capabilities Dropdown */}
       <div
         className={`fixed top-20 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-2xl transition-all duration-300 z-40 ${
@@ -394,14 +323,13 @@ export function Navbar(props: Props) {
             <h3 className="text-2xl font-bold text-gray-900 mb-2">Manufacturing Capabilities</h3>
             <p className="text-gray-600">Advanced manufacturing processes with precision, quality, and scale</p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-6">
             {capabilities.map((capability) => (
               <Link
-                    key={capability.href}
-                    href={capability.href}
-                    className="block group p-6 rounded-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200"
-                  >
+                key={capability.href}
+                href={capability.href}
+                className="block group p-6 rounded-xl hover:bg-blue-50 transition-all duration-300 border border-gray-100 hover:border-blue-200"
+              >
                 <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
                   {capability.label}
                 </h4>
@@ -415,7 +343,6 @@ export function Navbar(props: Props) {
           </div>
         </div>
       </div>
-
       {/* About Dropdown */}
       <div
         className={`fixed top-20 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-2xl transition-all duration-300 z-40 ${
@@ -429,7 +356,6 @@ export function Navbar(props: Props) {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">About Logicwerk DLM</h3>
               <p className="text-gray-600 mb-8">Learn more about our company, team, and mission</p>
-
               <div className="space-y-4">
                 {about.map((item) =>
                   item.isContact ? (
@@ -474,7 +400,6 @@ export function Navbar(props: Props) {
                 )}
               </div>
             </div>
-
             <div>
               <h4 className="text-lg font-semibold text-gray-900 mb-6">Insights & Resources</h4>
               <div className="space-y-4">
@@ -501,8 +426,7 @@ export function Navbar(props: Props) {
           </div>
         </div>
       </div>
-
-      {/* Backdrop */}
+      {/* Backdrop for dropdowns */}
       {activeDropdown && (
         <div
           className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 transition-opacity duration-300"
