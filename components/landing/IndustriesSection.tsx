@@ -32,7 +32,7 @@ const industries = [
   },
   {
     name: "Industrial Equipment",
-    image: "../../../images/manu.jpg",
+    image: "../../../images/manu.avif",
     description: "Custom manufacturing for heavy and industrial equipment.",
   },
 ];
