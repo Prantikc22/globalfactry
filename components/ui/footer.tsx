@@ -71,36 +71,27 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Offerings */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
+            <h3 className="text-lg font-semibold mb-6">Offerings</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/services/contract-manufacturing"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  Contract Manufacturing
-                  <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Machining & Metals</Link>
               </li>
               <li>
-                <Link
-                  href="/services/job-work"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  Integrated Job-Work
-                  <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Electronics & Devices</Link>
               </li>
               <li>
-                <Link
-                  href="/services/inventory-logistics"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center group"
-                >
-                  Inventory & Logistics
-                  <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Packaging & Branding</Link>
+              </li>
+              <li>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Textiles & Leather</Link>
+              </li>
+              <li>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Construction & Infrastructure</Link>
+              </li>
+              <li>
+                <Link href="/#capabilities" className="text-gray-400 hover:text-white transition-colors">Advanced Manufacturing</Link>
               </li>
             </ul>
           </div>
@@ -187,6 +178,16 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <Link href="/#how-it-works" className="text-gray-400 hover:text-white transition-colors">
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link href="/#finance" className="text-gray-400 hover:text-white transition-colors">
+                  Financing
+                </Link>
+              </li>
+              <li>
                 <button
                   className="text-gray-400 hover:text-white transition-colors w-full text-left"
                   onClick={() => setShowQuoteModal(true)}
@@ -203,7 +204,7 @@ export function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">© 2024 Logicwerk DLM. All rights reserved.</div>
+            <div className="text-gray-400 text-sm">© 2025 Logicwerk DLM. All rights reserved.</div>
             <div className="flex space-x-6 text-sm">
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                 Privacy Policy

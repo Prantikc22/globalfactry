@@ -9,6 +9,7 @@ interface GradientButtonProps extends HTMLAttributes<HTMLDivElement> {
   height?: string
   onClick?: () => void
   disabled?: boolean
+  square?: boolean
 }
 
 const GradientButton = ({
@@ -18,12 +19,13 @@ const GradientButton = ({
   className = "",
   onClick,
   disabled = false,
+  square = false,
   ...props
 }: GradientButtonProps) => {
   const commonGradientStyles = `
-    relative rounded-full cursor-pointer
+    relative cursor-pointer
     after:content-[""] after:block after:absolute after:bg-white
-    after:inset-[2px] after:rounded-full after:z-[1]
+    after:inset-[2px] after:z-[1]
     after:transition-opacity after:duration-300 after:ease-linear
     flex items-center justify-center
     ${disabled ? "opacity-50 cursor-not-allowed" : ""}
@@ -45,6 +47,7 @@ const GradientButton = ({
         className={`
           ${commonGradientStyles}
           modernGradient
+          ${square ? "rounded-lg after:rounded-lg" : "rounded-full after:rounded-full"}
           ${className}
         `}
         style={

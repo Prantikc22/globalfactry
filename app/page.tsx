@@ -6,11 +6,16 @@ import { Footer } from "@/components/ui/footer";
 import {
   HeroSection,
   ClientLogosSection,
-  ServicesSection,
+  WhyLogicwerkSection,
+  FinanceSection,
+  TestimonialsSection,
   CapabilitiesSection,
   IndustriesSection,
   GlobalExcellenceSection,
   CaseStudiesSection,
+  CertificationsSection,
+  ProcessSection,
+  CTAAuroraSection,
 } from "@/components/landing/sections";
 
 // client wrappers
@@ -28,13 +33,17 @@ export default function GlobalfactryWebsite() {
 
       {/* other sections */}
       <ClientLogosSection />
-      <ServicesSection />
+      <WhyLogicwerkSection />
       <CapabilitiesSection />
       <IndustriesSection />
+      <ProcessSection />
       <GlobalExcellenceSection />
+      <FinanceSection />
       <CaseStudiesSection />
+      <CertificationsSection />
+      <CTAAuroraSection />
 
-      <Html />
+
       <Footer />
 
       {/* client utilities */}

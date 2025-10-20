@@ -4,31 +4,35 @@ import GradientButton from "@/components/ui/button-1";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 const caseStudies = [
   {
     image: "/images/tatamotors.jpg",
-    alt: "Automotive Parts Manufacturing",
+    alt: "Automotive Manufacturing",
     badge: "Automotive",
-    title: "Tata Motors Component Scaling",
-    description: "Helped Tata Motors scale their component manufacturing by 300% while reducing costs by 25% through our optimized supply chain network across Maharashtra and Tamil Nadu.",
-    points: ["300% production increase", "25% cost reduction", "6-month timeline"],
+    title: "CNC + Sheet Metal Assembly",
+    description: "End-to-end machining and sheet metal assembly for an automotive platform.",
+    points: ["15% cost reduction", "6-week ramp"],
+    href: "/case-studies/automotive-cnc-assembly",
   },
   {
-    image: "/images/medical.jpg",
-    alt: "Medical Device Manufacturing",
-    badge: "Medical Devices",
-    title: "Biocon Biosimilars Production",
-    description: "Enabled Biocon to establish FDA-compliant biosimilar manufacturing facilities in Bangalore, achieving international quality standards for global market entry.",
-    points: ["FDA compliance achieved", "Global market access", "ISO 13485 certified"],
+    image: "/images/d2c.webp",
+    alt: "D2C Cosmetics Packaging",
+    badge: "D2C Cosmetics",
+    title: "Packaging (Carton + Bottle + Label)",
+    description: "Consolidated primary and secondary packaging under one PO for a D2C brand.",
+    points: ["3-week turnaround", "Repeat orders"],
+    href: "/case-studies/d2c-cosmetics-packaging",
   },
   {
-    image: "/images/solarpanel.webp",
-    alt: "Solar Panel Manufacturing",
-    badge: "Renewable Energy",
-    title: "Solar Panel Export Success",
-    description: "Facilitated the export of high-efficiency solar panels to Europe and the US, supporting the transition to renewable energy worldwide.",
-    points: ["Export to 10+ countries", "High-efficiency panels", "Sustainable supply chain"],
+    image: "/images/elec.webp",
+    alt: "Industrial Electronics Manufacturing",
+    badge: "Industrial Electronics",
+    title: "PCB + Box Build",
+    description: "Full stack PCB fabrication, assembly, testing and box build for industrial electronics.",
+    points: ["97% on-time delivery", "90-day PO finance"],
+    href: "/case-studies/industrial-electronics-pcb-box-build",
   },
 ];
 
@@ -37,7 +41,7 @@ export default function CaseStudiesSection() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories from the World</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Results That Speak for Themselves</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover how we've helped Indian manufacturers scale globally and international companies establish their presence in India
           </p>
@@ -64,7 +68,9 @@ export default function CaseStudiesSection() {
                   ))}
                 </div>
                 <div className="mt-auto">
-                  <GradientButton width="140px" height="36px" className="text-sm">Read Case Study</GradientButton>
+                  <Link href={study.href}>
+                    <GradientButton width="140px" height="36px" className="text-sm" square>Read Case Study</GradientButton>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

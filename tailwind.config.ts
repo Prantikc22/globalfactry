@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 // all in fixtures is set to tailwind v3 as interims solutions
 
@@ -12,6 +13,10 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ["var(--font-bitter)"],
+  			garet: ["var(--font-garet)"],
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -86,13 +91,35 @@ const config: Config = {
   					height: '0'
   				}
   			}
+        ,
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        aurora: 'aurora 60s linear infinite'
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function addVariablesForColors({ addBase, theme }: any) {
+      const allColors = flattenColorPalette(theme("colors"));
+      const newVars = Object.fromEntries(
+        Object.entries(allColors).map(([key, val]) => [
+          `--${key}`,
+          val as string,
+        ])
+      );
+      addBase({ ":root": newVars });
+    },
+  ],
 };
 export default config;

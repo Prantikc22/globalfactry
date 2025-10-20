@@ -6,35 +6,75 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
-// All static data (services, capabilities, insights, about)
-const services = [
+// Offerings data: categories with SKUs
+const offerings = [
   {
-    href: "/services/contract-manufacturing",
-    label: "Contract Manufacturing",
-    description: "Unlimited capacity with lower pricing & lead times",
+    label: "Metal & Machining",
+    items: [
+      "CNC Machining",
+      "Sheet Metal Fabrication",
+      "Die Casting",
+      "Forging",
+      "Extrusions",
+      "Investment Casting",
+      "Surface Finishing",
+    ],
   },
   {
-    href: "/services/job-work",
-    label: "Integrated Job-Work",
-    description: "From prototyping to production with full transparency",
+    label: "Electronics & Devices",
+    items: [
+      "PCB Prototyping",
+      "SMT/THT Assembly",
+      "Wire Harnesses",
+      "Box Build",
+      "Battery Packs",
+      "Testing (ICT/FCT)",
+      "Component Sourcing",
+    ],
   },
   {
-    href: "/services/inventory-logistics",
-    label: "Inventory & Logistics",
-    description: "AI-driven demand forecasting and global shipping",
+    label: "Packaging & Branding",
+    items: [
+      "Corrugated Boxes",
+      "Cartons",
+      "Rigid Boxes",
+      "Flexible Packaging",
+      "Blow Molding",
+      "Thermoformed Trays",
+      "Shrink Sleeves",
+      "Biodegradable Packaging",
+    ],
   },
-];
-
-const capabilities = [
-  { href: "/capabilities/extrusions", label: "Extrusions", description: "Precision aluminum and plastic profiles" },
-  { href: "/capabilities/die-casting", label: "Die Casting", description: "High-pressure casting with tight tolerances" },
-  { href: "/capabilities/cnc-machining", label: "CNC Machining", description: "Multi-axis precision machining" },
-  { href: "/capabilities/injection-molding", label: "Injection Molding", description: "High-volume plastic manufacturing" },
-  { href: "/capabilities/forging", label: "Forging", description: "Hot and cold forging processes" },
-  { href: "/capabilities/sheet-metal-stamping", label: "Sheet Metal Stamping", description: "Progressive and transfer stamping" },
-  { href: "/capabilities/prototyping-pre-production", label: "Prototyping", description: "Rapid prototyping and small-batch production" },
-  { href: "/capabilities/investment-casting", label: "Investment Casting", description: "Precision casting for complex geometries" },
-  { href: "/capabilities/assembly-services", label: "Assembly Services", description: "Complete assembly with quality assurance" },
+  {
+    label: "Textiles & Leather",
+    items: [
+      "Cut & Sew",
+      "Embroidery & Printing",
+      "Upholstery",
+      "Knitting & Weaving",
+      "Leather Goods",
+    ],
+  },
+  {
+    label: "Construction & Infra",
+    items: [
+      "Structural Steel",
+      "Metal Joinery",
+      "Precast Concrete",
+      "Prefab Modules",
+      "Glass Facades",
+      "Carpentry & Woodwork",
+    ],
+  },
+  {
+    label: "Advanced Manufacturing",
+    items: [
+      "Assembly & Kitting",
+      "QC & Inspection",
+      "Component Sourcing",
+      "Tooling & Fixtures",
+    ],
+  },
 ];
 
 const insights = [
@@ -51,8 +91,7 @@ const about = [
 export default function NavbarServer() {
   return (
     <NavbarClient
-      services={services}
-      capabilities={capabilities}
+      offerings={offerings}
       insights={insights}
       about={about}
     />
