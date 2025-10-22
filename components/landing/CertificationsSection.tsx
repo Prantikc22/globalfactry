@@ -4,7 +4,6 @@ import Image from "next/image";
 const CERTS = [
   { id: "iso", src: "/images/certifications/as.webp", alt: "ISO" },
   { id: "tuv", src: "/images/certifications/iso.webp", alt: "TÜV Nord" },
-  { id: "gdpr", src: "/images/certifications/iso2.webp", alt: "GDPR" },
   { id: "drdo", src: "/images/certifications/drdo.webp", alt: "DRDO" },
   { id: "asme", src: "/images/certifications/asme.webp", alt: "ASME" },
   { id: "iatf", src: "/images/certifications/iatf.webp", alt: "IATF" },
@@ -24,7 +23,7 @@ export default function CertificationsSection() {
               Our partner facilities hold global certifications to ensure your parts meet every compliance standard.
             </p>
           </div>
-          <div className="ml-4 md:ml-6 flex flex-nowrap items-center gap-4 md:gap-6 overflow-x-auto">
+          <div className="ml-4 md:ml-6 flex flex-wrap items-center gap-4 md:gap-6 overflow-hidden">
             {CERTS.map((c) => (
               <div key={c.id} className="flex-none h-8 md:h-10 w-auto">
                 <Image src={c.src} alt={c.alt} width={96} height={40} className="object-contain h-8 md:h-10 w-auto" />

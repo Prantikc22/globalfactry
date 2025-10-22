@@ -4,8 +4,8 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Logicwerk DLM: Manufacturing at the Speed of Light',
-  description: 'Logicwerk DLM: Manufacturing at the Speed of Light. AI-powered manufacturing, global scale, and rapid prototyping.',
+  title: 'Logicwerk DLM - Smart, Fast & Scalable Manufacturing',
+  description: 'Logicwerk DLM - Smart, Fast & Scalable Manufacturing. AI-powered manufacturing, global scale, and rapid prototyping.',
   generator: 'v0.dev',
 }
 

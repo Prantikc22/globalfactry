@@ -11,9 +11,9 @@ const industries = [
   { name: "Electronics", image: "/images/electronics.avif" },
   { name: "Medical Devices", image: "/images/medical.jpg" },
   { name: "Energy & Utilities", image: "/images/energy.avif" },
-  { name: "FMCG", image: "" },
-  { name: "Commodities", image: "/images/commodities.jpg" },
-  { name: "Technology", image: "/images/technology.jpg" },
+  { name: "FMCG", image: "/images/fmcg.webp" },
+  { name: "Commodities", image: "/images/commodities.webp" },
+  { name: "Technology", image: "/images/tech.webp" },
   { name: "Energy Transition", image: "/images/energy.avif" },
   { name: "Precision Manufacturing", image: "/images/manu.avif" },
 ];

@@ -15,6 +15,7 @@ export default function HeroSection() {
           loop
           playsInline
           preload="auto"
+          poster="/images/Poster.webp"
         >
           <source src="https://cdn.jsdelivr.net/gh/Prantikc22/logicwerk-website-assets@main/Herobg.mp4" type="video/mp4" />
         </video>
@@ -36,16 +37,11 @@ export default function HeroSection() {
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                  {/* Primary CTA: external register link, sharp corners */}
-                  <a href="https://app.logicwerkdlm.com/register" target="_blank" rel="noopener noreferrer">
-                    <GradientButton
-                      width="200px"
-                      height="56px"
-                      className="text-lg font-semibold"
-                      square
-                    >
+                  {/* Primary CTA: blue sharp button matching navbar */}
+                  <a href="https://app.logicwerkdlm.com/register" target="_blank" rel="noopener noreferrer" className="inline-block">
+                    <div className="px-6 py-4 rounded-lg bg-blue-600 text-white hover:bg-blue-500 text-lg font-semibold shadow-md transition">
                       Start Manufacturing
-                    </GradientButton>
+                    </div>
                   </a>
 
                   {/* Scroll button: use data-scroll-to instead of onClick */}

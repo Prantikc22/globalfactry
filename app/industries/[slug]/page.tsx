@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
-import { Html } from "@/components/ui/html"
+import CertificationsSection from "@/components/landing/CertificationsSection"
+import CTAAuroraSection from "@/components/landing/CTAAuroraSection"
 
 import GradientButton from "@/components/ui/button-1"
 import { CheckCircle, TrendingUp, Users, Award } from "lucide-react"
@@ -13,6 +14,72 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 
 const industryData = {
+  fmcg: {
+    title: "FMCG",
+    description: "Packaging, plastics, labeling, kitting, and rapid scale-up with global-grade QA and logistics",
+    image: "/images/fmcg.webp",
+    overview:
+      "Accelerate launches with on-demand manufacturing for primary and secondary packaging, plastic components, display units, and value-added kitting.",
+    capabilities: [
+      "Primary & secondary packaging (cartons, corrugated, flexible)",
+      "Plastic bottles, caps, thermoformed trays, shrink sleeves",
+      "Artwork checks, color mgmt, pack testing (drop/ECT)",
+      "Kitting, barcoding, and retail-ready display units",
+      "Rapid pilots and scale with supplier redundancy",
+      "PAN-India logistics with export compliance",
+    ],
+    applications: ["Personal Care", "Food & Beverage", "Home Care", "Retail"],
+    certifications: ["ISO 9001", "GMP-aligned processes", "RoHS where applicable"],
+    stats: {
+      "Programs Delivered": "1,000+",
+      "Artwork Accuracy": "99.7%",
+      "Average Lead Time": "2-4 weeks",
+    },
+  },
+  commodities: {
+    title: "Commodities",
+    description: "Industrial commodities: metals, packaging, and bulk manufacturing programs with QA docs, logistics, and financing",
+    image: "/images/commodities.webp",
+    overview:
+      "Reliable sourcing and production for metals, packaging, and large-volume components with full traceability and compliance.",
+    capabilities: [
+      "Steel/Al extrusions, stamped and machined parts",
+      "High-volume packaging with print QC and audits",
+      "QA docs: COA, PPAP/FAI, SPC, MSDS where applicable",
+      "Supplier redundancy and buffer planning",
+      "Export packing with INCOTERMS and documentation",
+      "Financing options for smoother working capital",
+    ],
+    applications: ["Metals", "Packaging", "Industrial Goods"],
+    certifications: ["ISO 9001", "Material COA", "PPAP/FAI"],
+    stats: {
+      "Shipments Managed": "5,000+",
+      "OTIF": "98.9%",
+      "Average Lead Time": "3-6 weeks",
+    },
+  },
+  technology: {
+    title: "Technology",
+    description: "Electronics, precision machining, enclosures, and scalable assembly with QA and logistics",
+    image: "/images/tech.webp",
+    overview:
+      "From PCBs and wire-harness to precision-machined parts and enclosures—build reliable products with traceability, testing, and rapid scale.",
+    capabilities: [
+      "PCB prototyping, SMT/THT with AOI/X-ray",
+      "Wire harnesses, box-build, firmware flashing & test",
+      "Precision CNC, sheet metal, and finishing",
+      "EMI/EMC considerations and enclosure integration",
+      "Traceability, QA reports, and pilot-to-scale",
+      "Global logistics with export docs",
+    ],
+    applications: ["IoT Devices", "Industrial Electronics", "Consumer Tech", "Robotics"],
+    certifications: ["ISO 9001", "IPC-A-610", "RoHS"],
+    stats: {
+      "Devices Shipped": "2M+",
+      "First-pass Yield": "99.3%",
+      "Average Lead Time": "2-6 weeks",
+    },
+  },
   electronics: {
     title: "Electronics",
     description: "Advanced manufacturing solutions for the electronics industry",
@@ -270,9 +337,11 @@ export default function IndustryPage() {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{industry.title}</h1>
             <p className="text-xl text-gray-200 mb-8">{industry.description}</p>
-            <GradientButton width="180px" height="48px" onClick={() => setQuoteModalOpen(true)}>
-              Get Industry Quote
-            </GradientButton>
+            <a href="https://app.logicwerkdlm.com/register" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <div className="px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-500 text-base font-semibold shadow-md transition">
+                Start Manufacturing – Get a Quote
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -374,9 +443,11 @@ export default function IndustryPage() {
                   <p className="text-sm text-gray-600 mb-4">
                     Speak with our {industry.title.toLowerCase()} manufacturing experts
                   </p>
-                  <GradientButton width="100%" height="40px">
-                    Schedule Consultation
-                  </GradientButton>
+                  <a href={`mailto:contact@logicwerkdlm.com?subject=Consultation%20Request%20(${encodeURIComponent(industry.title)})`} className="block">
+                    <div className="w-full text-center px-4 py-2 rounded-lg bg-white text-blue-700 ring-1 ring-blue-200 hover:bg-blue-50 text-sm font-medium transition">
+                      Schedule Consultation
+                    </div>
+                  </a>
                 </CardContent>
               </Card>
             </div>
@@ -385,9 +456,9 @@ export default function IndustryPage() {
       </section>
 
       
-
-      {/* CTA Section */}
-      <Html />
+      {/* Certifications & CTA */}
+      <CertificationsSection />
+      <CTAAuroraSection />
 
       <Footer />
     </div>
