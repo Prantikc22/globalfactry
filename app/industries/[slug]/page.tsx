@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Navbar } from "@/components/ui/navbar"
+import Navbar from "@/components/ui/NavbarServer"
 import { Footer } from "@/components/ui/footer"
 import CertificationsSection from "@/components/landing/CertificationsSection"
 import CTAAuroraSection from "@/components/landing/CTAAuroraSection"
